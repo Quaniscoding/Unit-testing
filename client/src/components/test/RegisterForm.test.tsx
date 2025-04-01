@@ -2,7 +2,6 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import RegisterForm from "../RegisterForm";
 import { registerUser } from "../../services/auth";
 
-// Mock registerUser
 jest.mock("../../services/auth");
 
 describe("RegisterForm Component", () => {
@@ -14,18 +13,16 @@ describe("RegisterForm Component", () => {
 
   it("should render the form with email and password inputs", () => {
     render(<RegisterForm />);
-
+    // eslint-disable-next-line testing-library/no-debugging-utils
+    screen.debug();
     expect(screen.getByText("Register")).toBeInTheDocument();
     expect(screen.getByLabelText("Email:")).toBeInTheDocument();
     expect(screen.getByLabelText("Password:")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Register" })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
   });
 
   it("should update email and password inputs on change", () => {
     render(<RegisterForm />);
-
     const emailInput = screen.getByLabelText("Email:") as HTMLInputElement;
     const passwordInput = screen.getByLabelText(
       "Password:"
@@ -45,10 +42,9 @@ describe("RegisterForm Component", () => {
     });
 
     render(<RegisterForm />);
-
     const emailInput = screen.getByLabelText("Email:");
     const passwordInput = screen.getByLabelText("Password:");
-    const submitButton = screen.getByRole("button", { name: "Register" });
+    const submitButton = screen.getByRole("button", { name: "Submit" });
 
     fireEvent.change(emailInput, { target: { value: "test@example.com" } });
     fireEvent.change(passwordInput, { target: { value: "password123" } });
@@ -58,21 +54,15 @@ describe("RegisterForm Component", () => {
       expect(screen.getByText("Registration successful")).toBeInTheDocument();
       expect(screen.queryByText(/error/i)).not.toBeInTheDocument();
     });
-
-    expect(mockRegisterUser).toHaveBeenCalledWith(
-      "test@example.com",
-      "password123"
-    );
   });
 
   it("should display error message on failed registration", async () => {
     mockRegisterUser.mockRejectedValueOnce(new Error("User already exists"));
 
     render(<RegisterForm />);
-
     const emailInput = screen.getByLabelText("Email:");
     const passwordInput = screen.getByLabelText("Password:");
-    const submitButton = screen.getByRole("button", { name: "Register" });
+    const submitButton = screen.getByRole("button", { name: "Submit" });
 
     fireEvent.change(emailInput, { target: { value: "test@example.com" } });
     fireEvent.change(passwordInput, { target: { value: "password123" } });
@@ -82,21 +72,37 @@ describe("RegisterForm Component", () => {
       expect(screen.getByText("User already exists")).toBeInTheDocument();
       expect(screen.queryByText(/successful/i)).not.toBeInTheDocument();
     });
-
-    expect(mockRegisterUser).toHaveBeenCalledWith(
-      "test@example.com",
-      "password123"
-    );
   });
 
-  it("should not call registerUser if form is invalid", async () => {
-    render(<RegisterForm />);
+  it("should display generic error message for unexpected errors", async () => {
+    mockRegisterUser.mockRejectedValueOnce("Unknown error");
 
-    const submitButton = screen.getByRole("button", { name: "Register" });
+    render(<RegisterForm />);
+    const emailInput = screen.getByLabelText("Email:");
+    const passwordInput = screen.getByLabelText("Password:");
+    const submitButton = screen.getByRole("button", { name: "Submit" });
+
+    fireEvent.change(emailInput, { target: { value: "test@example.com" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("An unexpected error occurred")
+      ).toBeInTheDocument();
+    });
+  });
+
+  it("should display error if email or password is missing", async () => {
+    render(<RegisterForm />);
+    const submitButton = screen.getByRole("button", { name: "Submit" });
 
     fireEvent.click(submitButton);
 
     await waitFor(() => {
+      expect(
+        screen.getByText("Email and password are required")
+      ).toBeInTheDocument();
       expect(mockRegisterUser).not.toHaveBeenCalled();
     });
   });

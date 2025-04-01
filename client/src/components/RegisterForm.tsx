@@ -13,6 +13,11 @@ const RegisterForm: React.FC = () => {
     setMessage(null);
     setError(null);
 
+    if (!email || !password) {
+      setError("Email and password are required");
+      return;
+    }
+
     try {
       const response = await registerUser(email, password);
       setMessage(response.message);
@@ -60,7 +65,7 @@ const RegisterForm: React.FC = () => {
             cursor: "pointer",
           }}
         >
-          Register
+          Submit
         </button>
       </form>
       {message && (

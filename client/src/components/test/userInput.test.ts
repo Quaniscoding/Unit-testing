@@ -1,4 +1,4 @@
-import { sanitizeInput } from "../userInput";
+import { sanitizeInput } from "../../utils/userInput";
 
 describe("sanitizeInput", () => {
   it("should remove special characters and trim input", () => {

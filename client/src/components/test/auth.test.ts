@@ -1,7 +1,7 @@
 // src/services/auth.test.ts
 
 import axios from "axios";
-import { registerUser } from "../auth";
+import { registerUser } from "../../services/auth";
 
 jest.mock("axios");
 

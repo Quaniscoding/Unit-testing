@@ -1,4 +1,4 @@
-import { fetchUserData } from "../api";
+import { fetchUserData } from "../../services/api";
 
 global.fetch = jest.fn();
 
