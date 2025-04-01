@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "./App";
-import RegisterForm from "./components/RegisterForm";
+import App from "../App";
 
 // Mock RegisterForm component
 jest.mock("./components/RegisterForm", () => {

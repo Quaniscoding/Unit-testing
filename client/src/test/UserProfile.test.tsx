@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import { UserProfile } from "../UserProfile";
-import * as api from "../../services/api";
+import * as api from "../services/api";
+import { UserProfile } from "../components/UserProfile";
 
 jest.mock("../../services/api");
 

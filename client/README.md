@@ -26,19 +26,23 @@ client/
 
 │ ├── components/
 
-│ │ ├── **tests**/
-
-│ │ │ └── UserProfile.test.tsx
-
 │ │ └── UserProfile.tsx
 
+│ ├── **tests**/
+
+│ │ └── api.test.ts
+
+│ │ └── App.test.tsx
+
+│ │ └── auth.test.ts
+
+│ │ └── RegisterForm.test.ts
+
+│ │ └── userInput.test.ts
+
+│ │ └── UserProfile.test.tsx
+
 │ ├── services/
-
-│ │ ├── **tests**/
-
-│ │ │ └── api.test.ts
-
-│ │ │ └── auth.test.ts
 
 │ │ └── api.ts
 
@@ -46,15 +50,9 @@ client/
 
 │ ├── utils/
 
-│ │ ├── **tests**/
-
-│ │ │ └── userInput.test.ts
-
 │ │ └── userInput.ts
 
 │ ├── App.tsx
-
-│ ├── App.test.tsx
 
 │ ├── index.tsx
 
@@ -66,15 +64,17 @@ client/
 
 └── README.md
 
-src/components/: Chứa các React component và test tương ứng.
+src/components/: Chứa các React component.
 
-src/services/: Chứa logic gọi API và test.
+src/services/: Chứa logic gọi API.
 
-src/utils/: Chứa các hàm tiện ích và test.
+src/utils/: Chứa các hàm tiện ích.
 
 src/App.tsx: Component chính của ứng dụng.
 
-src/App.test.tsx: Test cho component App.
+src/test: Các test của toàn bộ ứng dụng.
+
+src/setupTests.ts: Cài đặt tests cho toàn bộ ứng dụng.
 
 Yêu cầu
 
