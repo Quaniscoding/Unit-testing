@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1743169681306" clover="3.2.0">
+  <project timestamp="1743169681307" name="All files">
+    <metrics statements="24" coveredstatements="24" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3" elements="37" coveredelements="37" complexity="0" loc="24" ncloc="24" packages="3" files="3" classes="3"/>
+    <package name="models">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="userModel.js" path="B:\unit-test\server\src\models\userModel.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="18" coveredstatements="18" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <file name="userRoutes.js" path="B:\unit-test\server\src\routes\userRoutes.js">
+        <metrics statements="18" coveredstatements="18" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="13" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="validation.js" path="B:\unit-test\server\src\utils\validation.js">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
